@@ -1,0 +1,19 @@
+Hi,
+
+Its an event invitation , Events details are below
+
+
+<%=@messg%>
+
+
+To accept
+<% debugger %>
+<%#=SERVER_URL+event_invitation_accepted_invitations(@event,@user)%>
+<%= accept_event_invitations_url({:event_id=>@event.id, :user_id=>@user.id}) %>
+
+
+
+To reject
+<%=@url2%>
+Thanks
+Rizwan

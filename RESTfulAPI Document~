@@ -1,0 +1,30 @@
+Retrieve Events
+url = URI.parse("http://localhost:3000/events.xml")
+request = Net::HTTP::Get.new(url.path)
+request.content_type='text/xml'
+response = Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
+
+Create Event
+url = URI.parse("http://localhost:3000/events")
+request = Net::HTTP::Post.new(url.path)
+request.content_type='text/xml'
+request.body="<event><name>Birthday</name><description>testing<description>
+<date>2011-03-25</date><location>Pakistan</location></event>"
+response = Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
+
+Update Event
+url = URI.parse("http://localhost:3000/events/1")
+request = Net::HTTP::Post.new(url.path)
+request.content_type='text/xml'
+request.body="<event><name>Birthday</name><description>testing<description>
+<date>2011-03-25</date><location>Pakistan</location></event>"
+response = Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
+
+Destry Event
+url = URI.parse("http://localhost:3000/events/1")
+request = Net::HTTP::Delete.new(url.path)
+request.content_type='text/xml'
+response = Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
+
+
+

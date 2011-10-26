@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  def send_invitation(invi,event,user)
+  def send_invitation(invi,event,user,url)
     #setup
     #    setup_email(user)
     @from = "no-reply<event_management@gmail.com>"
@@ -15,6 +15,7 @@ class UserMailer < ActionMailer::Base
     @body[:invi]=invi
     @body[:event]=event
     @body[:user]=user
+    @body[:url]=url
     
   end
   

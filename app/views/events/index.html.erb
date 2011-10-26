@@ -25,12 +25,13 @@
     <td>
     <% form_for event.invitations.new ,:url=>event_invitations_path(event) do |f| %>
       <%
-      invited_ids =[]
-          invited_ids << event.user_id.to_s unless event.user_id.blank?
+      #invited_ids =[]
+          #invited_ids << event.user_id.to_s unless event.user_id.blank?
 
-          invited_ids = invited_ids | event.invited_ids.split(",") unless event.invited_ids.blank?    
+          #invited_ids = invited_ids | event.invited_ids.split(",") unless event.invited_ids.blank?
       %>
-      <%= f.select "user_id",@users.collect { |u| [u.name,u.id] unless invited_ids.include? "#{u.id}"  }  %><a id="abc_<%=event.id%>" onclick='$(this).ancestors()[0].submit();'>Invite friend</a>
+      <%#= f.select "user_id",@users.collect { |u| [u.name,u.id] unless invited_ids.include? "#{u.id}"  }  %>
+      <%= f.select "user_id",@users.collect { |u| [u.name,u.id]}  %><a id="abc_<%=event.id%>" onclick='$(this).ancestors()[0].submit();'>Invite friend</a>
     <% end %>
     </td>
     <td><%= link_to 'Show', event %></td>

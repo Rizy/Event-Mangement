@@ -15,7 +15,6 @@ class Invitation < ActiveRecord::Base
   
   end
   def send_invitation
-    debugger
     url = generate_activation_url
     event = Event.find(self.event_id)
     user = User.find(self.user_id)
@@ -26,7 +25,7 @@ class Invitation < ActiveRecord::Base
     "#{SERVER_URL}/invitation_accepted/?id=?#{self.id}&code#{self.code}"
   end
   def send_email(event,user,url)
-    UserMailer.deliver_send_invitation(self,event,user)
+    UserMailer.deliver_send_invitation(self,event,user,url)
   end
 end
 
